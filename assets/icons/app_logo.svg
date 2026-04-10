@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00B7FF" />
+      <stop offset="100%" stop-color="#0A84FF" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" rx="230" fill="url(#bg-gradient)" />
+
+  <g stroke="#FFFFFF" stroke-width="72" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M 176 330 L 176 176 L 330 176" />
+    <path d="M 694 176 L 848 176 L 848 330" />
+    <path d="M 848 694 L 848 848 L 694 848" />
+    <path d="M 330 848 L 176 848 L 176 694" />
+  </g>
+
+  <path d="M 574.5 312 
+           L 399.5 532 
+           L 549.5 532 
+           L 449.5 712 
+           L 624.5 492 
+           L 474.5 492 Z" 
+        fill="#FFFFFF" 
+        stroke="#FFFFFF" 
+        stroke-width="16" 
+        stroke-linejoin="round" />
+</svg>
