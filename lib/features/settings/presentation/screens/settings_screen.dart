@@ -25,6 +25,10 @@ class SettingsScreen extends ConsumerWidget {
             currentMode: settings.themeMode,
             onChanged: (mode) => settingsDao.updateThemeMode(mode),
           ),
+          _LanguageTile(
+            currentLanguage: settings.language,
+            onChanged: (lang) => settingsDao.updateLanguage(lang),
+          ),
           const Divider(height: 1),
 
           const _SectionHeader(title: 'SCAN'),
@@ -177,6 +181,78 @@ class _SwitchTile extends StatelessWidget {
       subtitle: Text(subtitle),
       value: value,
       onChanged: onChanged,
+    );
+  }
+}
+
+class _LanguageTile extends StatelessWidget {
+  final String currentLanguage;
+  final ValueChanged<String> onChanged;
+
+  const _LanguageTile({
+    required this.currentLanguage,
+    required this.onChanged,
+  });
+
+  static const _languages = {
+    'en': 'English',
+    'vi': 'Tiếng Việt',
+    'es': 'Español',
+    'fr': 'Français',
+    'zh': '中文',
+    'ja': '日本語',
+    'ko': '한국어',
+    'de': 'Deutsch',
+    'pt': 'Português',
+    'hi': 'हिन्दी',
+    'ar': 'العربية',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: const Icon(Icons.language),
+      title: const Text('Language'),
+      subtitle: Text(_languages[currentLanguage] ?? currentLanguage),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) => SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    'Choose Language',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ),
+                RadioGroup<String>(
+                  groupValue: currentLanguage,
+                  onChanged: (value) {
+                    if (value != null) {
+                      onChanged(value);
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: _languages.entries.map(
+                      (entry) => RadioListTile<String>(
+                        title: Text(entry.value),
+                        value: entry.key,
+                      ),
+                    ).toList(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
