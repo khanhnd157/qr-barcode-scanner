@@ -197,6 +197,15 @@ class _LanguageTile extends StatelessWidget {
   static const _languages = {
     'en': 'English',
     'vi': 'Tiếng Việt',
+    'es': 'Español',
+    'fr': 'Français',
+    'zh': '中文',
+    'ja': '日本語',
+    'ko': '한국어',
+    'de': 'Deutsch',
+    'pt': 'Português',
+    'hi': 'हिन्दी',
+    'ar': 'العربية',
   };
 
   @override
